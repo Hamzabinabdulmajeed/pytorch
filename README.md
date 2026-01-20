@@ -1,59 +1,66 @@
-# PyTorch Brain Tumor Classification via Attention Mechanisms
+# PyTorch: From Scratch to Advanced Architectures
 
-This project implements a Deep Learning pipeline using PyTorch to classify brain MRI scans into four distinct categories. It features a custom architecture combining Convolutional Neural Networks (CNNs) with Spatial and Channel Attention modules.
+A comprehensive series of lectures and implementations focused on building Deep Learning models from the ground up using PyTorch.
 
-## Dataset
-The model is trained on the Brain Tumor MRI Dataset, which includes:
-- **Glioma**
-- **Meningioma**
-- **No Tumor**
-- **Pituitary**
+## Curriculum Overview
 
-## Model Architecture
-The architecture is built from scratch to include:
-1. **Base Convolutional Layers**: Standard feature extraction using `nn.Conv2d`.
-2. **Channel Attention**: A Squeeze-and-Excitation style block that adaptively recalibrates channel-wise feature responses.
-3. **Spatial Attention**: A module that focuses on "where" the informative part of the image is located.
-4. **Classifier Head**: Fully connected layers (`nn.Linear`) that map the extracted features to the four output classes.
-
-
-
-## Implementation Details
-
-### Data Preprocessing
-Images are processed using `torchvision.transforms`:
-- Resizing to 224x224 pixels.
-- Conversion to Tensors.
-- Normalization using ImageNet statistics (Mean: [0.485, 0.456, 0.406], Std: [0.229, 0.224, 0.225]).
-
-### Training Configuration
-- **Loss Function**: CrossEntropyLoss for multi-class classification.
-- **Optimizer**: Adam Optimizer.
-- **Device**: Configured to run on CUDA (GPU) for accelerated training.
-
-## Usage
-
-### Training
-The training loop handles:
-1. Forward pass of batches through the model.
-2. Loss calculation and backpropagation.
-3. Parameter updates via the Adam optimizer.
-4. Validation at the end of each epoch to track accuracy and prevent overfitting.
-
-### Visualization
-The project utilizes `matplotlib` for plotting:
-- Training vs. Validation Loss.
-- Training vs. Validation Accuracy.
-
-## Results and Interpretation
-The model uses Class Activation Mapping (CAM) to provide interpretability, highlighting the specific regions of the MRI scan that influenced the model's prediction.
+### Phase 1: Foundations
+* **Lecture 1: Tensor Basics**
+    * Creation, manipulation, and memory management.
+    * Understanding the difference between `.view()` and `.reshape()`.
+* **Lecture 2: Autograd Engine**
+    * The computational graph and `requires_grad`.
+    * Manual backpropagation using `.backward()`.
+* **Lecture 3: Linear Regression from Scratch**
+    * Implementing $y = wx + b$ without `nn.Module`.
+    * Manual gradient descent and weight updates.
 
 
 
-## Dependencies
-- torch
-- torchvision
-- numpy
-- matplotlib
-- pandas
-- torchcam (optional for visualization)
+### Phase 2: Neural Network Modules
+* **Lecture 4: The PyTorch Workflow**
+    * Using `nn.Module`, `nn.Linear`, and `torch.optim`.
+    * Transitioning from manual math to automated optimizers.
+* **Lecture 5: Non-Linearity & Classification**
+    * Introduction to Activation Functions (ReLU, Sigmoid).
+    * Binary Cross-Entropy (BCE) loss.
+* **Lecture 6: Data Pipelines**
+    * Building custom `Dataset` and `DataLoader` classes.
+    * Batching, shuffling, and epoch management.
+
+
+
+### Phase 3: Computer Vision & Transfer Learning
+* **Lecture 7: Convolutional Neural Networks (CNN)**
+    * Spatial features via `nn.Conv2d` and `nn.MaxPool2d`.
+    * Building the TinyVGG architecture.
+* **Lecture 8: Transfer Learning**
+    * Freezing backbones and modifying classifier heads.
+    * Using pre-trained weights from ImageNet.
+* **Lecture 9: Model Serialization**
+    * Saving and loading using `state_dict`.
+    * Deployment and inference mode.
+
+
+
+### Phase 4: Sequence Modeling & Advanced Topics
+* **Lecture 10: Natural Language Processing (NLP)**
+    * Tokenization and Word Embeddings.
+    * Recurrent Neural Networks (RNN) and Hidden States.
+* **Lecture 11: Transformers**
+    * Self-Attention and Multi-Head Attention.
+    * The shift from sequential to parallel processing.
+
+
+
+## Implementation: Brain Tumor Classification
+The series concludes with a real-world application based on MRI medical imaging, implementing:
+- **Spatial Attention**: Focusing on localized tumor regions.
+- **Channel Attention**: Weighting feature maps based on importance.
+- **Interpretability**: Using Class Activation Maps (CAM) to visualize model decisions.
+
+## Technical Requirements
+- PyTorch
+- Torchvision
+- NumPy
+- Matplotlib
